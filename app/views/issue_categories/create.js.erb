@@ -1,12 +1,13 @@
 hideModal();
-<% select = escape_javascript(content_tag('select', '', :id => 'issue_category_id', :name => 'issue[category_id]')) %>
+<% select = content_tag('select', content_tag('option'), :id => 'issue_category_id', :name => 'issue[category_id]') %>
 
 var current_tracker_id = $('#issue_tracker_id').val();
 
 var categories = "<%= escape_javascript(select) %>";
 <% @project.issue_categories.each do |c| %>
-if(<%= c.tracker.present? ? c.tracker_id : 'undefined' %> == undefined || <%= c.tracker.present? ? c.tracker_id : 'undefined' %> == current_tracker_id){
-  categories = categories.replace("<\\/select>", '<option value=\\"<%= c.id %>\\"><%= escape_javascript(c.name) %></option><\\/select>') ;
+var category_tracker_id = <%= c.tracker.present? ? c.tracker_id : 'undefined' %>;
+if(category_tracker_id == undefined || category_tracker_id == current_tracker_id){
+  categories = categories.replace("<\/select>", '<option value=<%= c.id %>><%= escape_javascript(c.name) %></option><\/select>') ;
 }
 <% end %>
 
