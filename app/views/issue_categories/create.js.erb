@@ -1,12 +1,12 @@
 hideModal();
 <% select = content_tag('select', content_tag('option'), :id => 'issue_category_id', :name => 'issue[category_id]') %>
 
-var current_tracker_id = $('#issue_tracker_id').val();
+var current_tracker_id = parseInt($('#issue_tracker_id').val());
 
 var categories = "<%= escape_javascript(select) %>";
 <% @project.issue_categories.each do |c| %>
-var category_tracker_id = <%= c.tracker.present? ? c.tracker_id : 'undefined' %>;
-if(category_tracker_id == undefined || category_tracker_id == current_tracker_id){
+var category_tracker_ids = <%= c.trackers.present? ? c.trackers.map(&:id) : 'undefined' %>;
+if(category_tracker_ids == undefined || category_tracker_ids.indexOf(current_tracker_id)>=0 ){
   categories = categories.replace("<\/select>", '<option value=<%= c.id %>><%= escape_javascript(c.name) %></option><\/select>') ;
 }
 <% end %>

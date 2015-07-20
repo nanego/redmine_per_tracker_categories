@@ -10,9 +10,9 @@ describe IssueCategoriesController, :type => :controller do
   end
 
   it "should update category with tracker" do
-    put :update, :id => 4, :issue_category => { :name => 'Printing', :tracker_id => 1 }
+    put :update, :id => 4, :issue_category => { :name => 'Printing', :tracker_ids => [1, 3] }
     expect(response).to redirect_to(settings_project_path(id: 'onlinestore', tab: :categories))
-    expect(IssueCategory.find(4).tracker).to eq Tracker.find(1)
+    expect(IssueCategory.find(4).trackers).to eq [Tracker.find(1), Tracker.find(3)]
   end
 
 end
