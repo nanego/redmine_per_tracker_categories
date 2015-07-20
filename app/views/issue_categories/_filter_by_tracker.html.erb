@@ -1,0 +1,66 @@
+<input type=text name=filter-by-tracker id=filter-by-tracker class=filter placeholder='<%= l('quick_search') %>' >
+
+<script type="text/javascript" charset="utf-8">
+
+var STRIP_HTML_REGEX = new RegExp("<[^>]*>", "g");
+
+$(function() {
+  //focus on search field on load
+  $("#filter-by-tracker").focus();
+
+  //filter projects depending on input value
+  $("#filter-by-tracker").on("keyup", function() {
+
+    var visible_categories = [];
+
+    if($(this).val()){
+      $(".list > tbody > tr").hide();
+      visible_lines = $(".list > tbody > tr:MyCaseInsensitiveContains('"+$(this).val()+"')");
+      visible_lines.show();
+    }else{
+      $(".list > tbody > tr").show();
+    }
+  });
+});
+
+$.extend($.expr[":"], {
+  "MyCaseInsensitiveContains": function(elem, i, match, array) {
+    // We lower case the pattern (match[3]) and the text (elem.textContent
+    // or elem.innerText) and remove accents from both
+    //
+    // The first condition searchs if pattern is in text
+    //
+    // BUT this is not enough, as textContent and co will remove html tags
+    // and produce unexpected matches. For instance if the DOM contains
+    // "<div>A<div>B</div></div>", its textContent will be "AB" thus it
+    // will match "AB".
+    //
+    // So the second condition strips HTML from elem.innerHTML and performs
+    // the verification again.
+    //
+    // We don't apply second conditions immediately because it would
+    // probably have dramatic performance drawbacks to blindly use regex
+    // substitutions hundred times per page.
+    return (remove_accents((elem.textContent || elem.innerText || "").toLowerCase()).indexOf(remove_accents(match[3] || "").toLowerCase()) >= 0) && (remove_accents((elem.innerHTML.replace(STRIP_HTML_REGEX, " ")).toLowerCase()).indexOf(remove_accents(match[3] || "").toLowerCase()) >= 0);
+  }
+});
+
+function remove_accents(str) {
+  var accent = [
+    /[\300-\306]/g, /[\340-\346]/g, // A, a
+    /[\310-\313]/g, /[\350-\353]/g, // E, e
+    /[\314-\317]/g, /[\354-\357]/g, // I, i
+    /[\322-\330]/g, /[\362-\370]/g, // O, o
+    /[\331-\334]/g, /[\371-\374]/g, // U, u
+    /[\321]/g, /[\361]/g, // N, n
+    /[\307]/g, /[\347]/g, // C, c
+  ];
+  var noaccent = ['A','a','E','e','I','i','O','o','U','u','N','n','C','c'];
+  for(var i = 0; i < accent.length; i++){
+    str = str.replace(accent[i], noaccent[i]);
+  }
+  return str;
+}
+
+
+</script>

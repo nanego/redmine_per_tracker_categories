@@ -1,3 +1,8 @@
+Deface::Override.new :virtual_path => 'projects/settings/_issue_categories',
+                     :name         => 'add-tracker-dynamic-filter',
+                     :insert_before => 'table',
+                     :partial      => 'issue_categories/filter_by_tracker'
+
 # Table header
 Deface::Override.new :virtual_path => 'projects/settings/_issue_categories',
                      :name         => 'add-tracker-header',
@@ -13,3 +18,5 @@ Deface::Override.new :virtual_path => 'projects/settings/_issue_categories',
                      :text         => <<STRING
 <td><%=h(category.trackers.map(&:name).join(', ')) if category.trackers.present? %></td>
 STRING
+
+
