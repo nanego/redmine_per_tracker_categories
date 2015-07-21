@@ -1,4 +1,4 @@
 # English strings go here for Rails i18n
 en:
   field_tracker_ids: "Trackers"
-  quick_search: "Quick search"
+  quick_search: "Recherche rapide"
