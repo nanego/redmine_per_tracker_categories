@@ -9,6 +9,6 @@ describe "FileChecksums" do
 
   it "should check core checksums" do
     #this js view is completely overridden so it should be adapted if anything change in Redmine core
-    assert_checksum "7d61d99dcae956a5cd0d896dd20049b4", "app/views/issue_categories/create.js.erb"
+    assert_checksum %w"7d61d99dcae956a5cd0d896dd20049b4 3e8ca31fbb2aa66bdd3ad7db808d4631", "app/views/issue_categories/create.js.erb"
   end
 end
