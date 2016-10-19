@@ -8,3 +8,7 @@ Deface::Override.new :virtual_path => 'issues/_form',
                      :name         => 'replace-categories-according-to-tracker-in-form-partial',
                      :replace      => 'erb[loud]:contains(":category_id")',
                      :partial      => 'issue_categories/category_selection'
+Deface::Override.new :virtual_path => 'issues/_form_with_positions',
+                     :name         => 'replace-categories-according-to-tracker-in-form-partial',
+                     :replace      => 'erb[loud]:contains(":category_id")',
+                     :partial      => 'issue_categories/category_selection'
