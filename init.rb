@@ -12,4 +12,5 @@ Redmine::Plugin.register :redmine_per_tracker_categories do
   version '1.0.0'
   url 'https://github.com/nanego/redmine_per_tracker_categories'
   author_url 'mailto:contact@vincent-robert.com'
+  requires_redmine_plugin :redmine_base_deface, :version_or_higher => '0.0.1'
 end
