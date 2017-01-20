@@ -1,0 +1,4 @@
+# Simplified Chinese strings go here for Rails i18n
+zh:
+  field_tracker_ids: "跟踪"
+  quick_search: "快速搜索"
