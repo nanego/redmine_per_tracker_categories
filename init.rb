@@ -1,7 +1,7 @@
 require 'redmine'
 
 # Patches to existing classes/modules
-ActionDispatch::Callbacks.to_prepare do
+ActiveSupport::Reloader.to_prepare do
   require_dependency 'per_tracker_categories/issue_category_patch'
 end
 
