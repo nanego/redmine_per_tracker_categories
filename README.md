@@ -1,15 +1,17 @@
 Redmine Per-tracker Issue Categories plugin
 =======================
 
-Redmine categories are set for the whole project. What if these categories should only apply to one specific tracker?
+Standard Redmine categories are set for the whole project. What if these categories should only apply to one specific tracker?
 
 This plugin allows you to specify trackers for each category.
 With a shorter category list, the issue form is cleaner and it helps the user to avoid mistakes.
 
-Installation
-------------
+Installation and compatibility
+--------------------
 
-This plugin has been tested with Redmine 3.3+.
+The last version of this plugin is only compatible with Redmine 4.
+
+If you need to use it with Redmine 3, you can use this older version: https://github.com/nanego/redmine_per_tracker_categories/tree/v3.3
 
 Note that this plugin now depends on:
 
