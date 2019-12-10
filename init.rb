@@ -3,6 +3,9 @@ require 'redmine'
 # Patches to existing classes/modules
 ActiveSupport::Reloader.to_prepare do
   require_dependency 'per_tracker_categories/issue_category_patch'
+  require_dependency 'per_tracker_categories/tracker_patch'
+  require_dependency 'per_tracker_categories/project_patch'
+  require_dependency 'per_tracker_categories/issue_categories_controller_patch'
 end
 
 Redmine::Plugin.register :redmine_per_tracker_categories do

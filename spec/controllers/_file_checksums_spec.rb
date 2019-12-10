@@ -10,5 +10,11 @@ describe "FileChecksums" do
   it "should check core checksums" do
     #this js view is completely overridden so it should be adapted if anything change in Redmine core
     assert_checksum %w"7d61d99dcae956a5cd0d896dd20049b4 3e8ca31fbb2aa66bdd3ad7db808d4631", "app/views/issue_categories/create.js.erb"
+
+    #the update action is completely overridden and should be adapted if anything change in Redmine core
+    assert_checksum %w"27f849c985a952b4302ac4a5acd7c1ab", "app/controllers/issue_categories_controller.rb"
+
+    #the issue_categories tab is completely overridden and should be adapted if anything change in Redmine core
+    assert_checksum %w"4f107afaf16c1787f6546275373ccff9", "app/views/projects/settings/_issue_categories.html.erb"
   end
 end
