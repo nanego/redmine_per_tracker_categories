@@ -1,11 +1,11 @@
 require "spec_helper"
-require File.dirname(__FILE__) + '/../../lib/per_tracker_categories/issue_category_patch'
+require 'per_tracker_categories/issue_category_patch'
 
 describe IssueCategoriesController, :type => :controller do
 
-  fixtures :issue_categories, :trackers
+  fixtures :issue_categories, :trackers, :users, :members, :projects, :roles, :member_roles, :enabled_modules
 
-  before do
+  before :each do
     @request.session[:user_id] = 1
   end
 
