@@ -1,0 +1,1 @@
+<% if @issue.safe_attribute?("category_id") && @issue.project.issue_categories.reject{ |c| c.trackers.present? && c.trackers.exclude?(@issue.tracker) }.any? %>
