@@ -2,7 +2,8 @@ require "spec_helper"
 
 describe IssuesController, :type => :controller do
 
-  fixtures :issue_categories, :issues, :trackers, :users, :members, :projects, :roles, :member_roles, :enabled_modules
+  fixtures :issue_categories, :issues, :trackers, :users, :members, :projects, :roles, :member_roles, :enabled_modules,
+           :issue_statuses
 
   render_views
 
@@ -17,7 +18,6 @@ describe IssuesController, :type => :controller do
   end
 
   it "should NOT display category field if no categories are defined" do
-    puts Project.find(1).issue_categories.inspect
     Project.find(1).issue_categories.delete_all
     get :edit, :params => {:id => 1}
     expect(response).to be_successful
