@@ -1,4 +1,5 @@
 # English strings go here for Rails i18n
-en:
+fr:
   field_tracker_ids: "Trackers"
   quick_search: "Recherche rapide"
+  use_category_positions: "Afficher les catégories selon le tri manuel en remplacement du tri par ordre alphabétique"

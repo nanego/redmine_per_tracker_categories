@@ -1,1 +1,9 @@
-<%= f.select :category_id, (@issue.project.issue_categories.reject{|c| c.trackers.present? && c.trackers.exclude?(@issue.tracker) }.collect {|c| [c.name, c.id]}), :include_blank => true, :required => @issue.required_attribute?('category_id') %>
+<% categories = @issue.project.issue_categories
+   categories = categories.sort { |a, b| a.name.downcase <=> b.name.downcase } unless @issue.project.use_category_positions
+   categories.reject { |c| c.trackers.present? && c.trackers.exclude?(@issue.tracker) }
+%>
+
+<%= f.select :category_id,
+             (categories.collect { |c| [c.name, c.id] }),
+             :include_blank => true,
+             :required => @issue.required_attribute?('category_id') %>

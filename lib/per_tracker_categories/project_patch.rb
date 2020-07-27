@@ -2,6 +2,8 @@ require_dependency 'project'
 
 class Project
 
+  safe_attributes "use_category_positions"
+
   has_many :issue_categories, lambda {order(:position, :name)}, :dependent => :delete_all
 
   # Copies issue categories from +project+
