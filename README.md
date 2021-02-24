@@ -1,8 +1,6 @@
 Redmine Per-tracker Issue Categories plugin
 =======================
 
-[![Build Status](https://travis-ci.com/nanego/redmine_per_tracker_categories.svg?branch=master)](https://travis-ci.com/nanego/redmine_per_tracker_categories)
-
 Standard Redmine categories are set for the whole project. What if these categories should only apply to one specific tracker?
 
 This plugin allows you to specify trackers for each category.
