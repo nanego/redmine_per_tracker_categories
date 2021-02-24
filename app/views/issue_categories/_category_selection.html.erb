@@ -1,6 +1,6 @@
 <% categories = @issue.project.issue_categories
    categories = categories.sort { |a, b| a.name.downcase <=> b.name.downcase } unless @issue.project.use_category_positions
-   categories.reject { |c| c.trackers.present? && c.trackers.exclude?(@issue.tracker) }
+   categories = categories.reject { |c| c.trackers.present? && c.trackers.exclude?(@issue.tracker) }
 %>
 
 <%= f.select :category_id,
