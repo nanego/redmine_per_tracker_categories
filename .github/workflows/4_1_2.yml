@@ -1,8 +1,8 @@
-name: Tests master
+name: Tests 4.1.2
 
 env:
   PLUGIN_NAME: redmine_per_tracker_categories
-  REDMINE_VERSION: master
+  REDMINE_VERSION: 4.1.2
   RAILS_ENV: test
 
 on:
