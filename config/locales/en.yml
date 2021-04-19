@@ -2,4 +2,4 @@
 en:
   field_tracker_ids: "Trackers"
   quick_search: "Quick search"
-  use_category_positions: "Use customized positions instead of alphabetic order"
+  field_use_category_positions: "Use customized positions instead of alphabetic order"
