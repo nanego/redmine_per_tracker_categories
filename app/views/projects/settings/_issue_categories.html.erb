@@ -4,7 +4,7 @@
   <%= form_for @project, url: project_path(@project, tab: 'categories') do |f| %>
     <%= label_tag do %>
       <%= f.check_box :use_category_positions %>
-      <%= t('use_category_positions') %>
+      <%= t('field_use_category_positions') %>
     <% end %>
     <%= submit_tag l('save') %>
   <% end %>
