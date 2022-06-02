@@ -22,6 +22,10 @@ describe ProjectsController, :type => :controller do
       cat.tracker_ids = [1, 3]
     end
 
+    source = Project.find(1)
+    source.use_category_positions = true
+    source.save
+
     assert_difference 'Project.count' do
       post :copy, :params => {
           :id => 1,
@@ -36,7 +40,7 @@ describe ProjectsController, :type => :controller do
       }
     end
     project = Project.find('unique-copy')
-    source = Project.find(1)
+
     assert_equal %w(issue_tracking time_tracking), project.enabled_module_names.sort
 
     assert_equal source.issue_categories.count, project.issue_categories.count, "All issues were not copied"
@@ -44,8 +48,9 @@ describe ProjectsController, :type => :controller do
 
     # It should also copy project-categories and associated trackers
     expect(project.issue_categories.first.trackers).to eq [Tracker.find(1), Tracker.find(3)]
-  end
+    expect(project.use_category_positions).to eq(true)
 
+  end
 end
 
 

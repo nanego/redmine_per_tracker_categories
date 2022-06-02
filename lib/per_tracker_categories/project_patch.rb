@@ -16,6 +16,7 @@ class Project
       new_issue_category.tracker_ids = issue_category.tracker_ids
 
       self.issue_categories << new_issue_category
+      self.use_category_positions = project.use_category_positions
     end
   end
 
