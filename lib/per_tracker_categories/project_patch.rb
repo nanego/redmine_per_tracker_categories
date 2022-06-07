@@ -4,7 +4,7 @@ class Project
 
   safe_attributes "use_category_positions"
 
-  has_many :issue_categories, lambda {order(:position, :name)}, :dependent => :delete_all
+  has_many :issue_categories, lambda {order(:position, :name)}, :dependent => :destroy
 
   # Copies issue categories from +project+
   def copy_issue_categories(project)
