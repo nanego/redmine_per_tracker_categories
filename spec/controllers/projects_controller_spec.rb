@@ -46,6 +46,20 @@ describe ProjectsController, :type => :controller do
     expect(project.issue_categories.first.trackers).to eq [Tracker.find(1), Tracker.find(3)]
   end
 
+  it "Should update the table issue_categories_trackers when deleting a project" do
+    IssueCategory.where(project: 1).each do |cat|
+      cat.tracker_ids = [1, 3]
+    end
+
+    expect(ActiveRecord::Base.connection.exec_query('select * from issue_categories_trackers').count).to eq(4)
+
+    pro = Project.find(1)
+    pro.destroy
+
+    expect(IssueCategory.where(project: 1).count).to eq(0)
+    expect(ActiveRecord::Base.connection.exec_query('select * from issue_categories_trackers').count).to eq(0)
+  end
+
 end
 
 
