@@ -1,10 +1,11 @@
-require_dependency 'project'
+module PerTrackerCategories::ProjectPatch
 
-class Project
-
-  safe_attributes "use_category_positions"
-
-  has_many :issue_categories, lambda {order(:position, :name)}, :dependent => :destroy
+  def self.prepended(base)
+    base.class_eval do
+      has_many :issue_categories, lambda { order(:position, :name) }, :dependent => :destroy
+      safe_attributes "use_category_positions"
+    end
+  end
 
   # Copies issue categories from +project+
   def copy_issue_categories(project)
@@ -21,3 +22,5 @@ class Project
   end
 
 end
+
+Project.prepend PerTrackerCategories::ProjectPatch

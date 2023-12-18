@@ -34,7 +34,6 @@ describe ProjectsController, :type => :controller do
           :identifier => 'unique-copy',
           :tracker_ids => ['1', '2', '3', ''],
           :enabled_module_names => %w(issue_tracking time_tracking)
-
         },
         :only => %w(issue_categories)
       }

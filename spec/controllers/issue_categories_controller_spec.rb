@@ -1,5 +1,4 @@
 require "spec_helper"
-require 'per_tracker_categories/issue_category_patch'
 
 describe IssueCategoriesController, :type => :controller do
 

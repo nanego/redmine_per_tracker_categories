@@ -1,12 +1,16 @@
-require_dependency 'issue_category'
+module PerTrackerCategories::IssueCategoryPatch
+
+  def self.included(base)
+    base.class_eval do
+      has_and_belongs_to_many :trackers
+    end
+  end
+
+end
 
 class IssueCategory
   include Redmine::SafeAttributes
-
-  acts_as_positioned :scope => :project_id
-
-  has_and_belongs_to_many :trackers
-
+  include PerTrackerCategories::IssueCategoryPatch
   safe_attributes :tracker_ids, :position
-
+  acts_as_positioned :scope => :project_id
 end
