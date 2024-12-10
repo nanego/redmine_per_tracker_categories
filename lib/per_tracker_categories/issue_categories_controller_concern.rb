@@ -28,6 +28,6 @@ end
 
 class IssueCategoriesController < ApplicationController
 
-  include PerTrackerCategories::IssueCategoriesControllerConcern
+  prepend PerTrackerCategories::IssueCategoriesControllerConcern
 
 end
