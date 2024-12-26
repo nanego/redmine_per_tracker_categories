@@ -10,7 +10,7 @@ module PerTrackerCategories::IssueCategoryPatch
 
 end
 
-class IssueCategory < ActiveRecord::Base
+class IssueCategory
   include PerTrackerCategories::IssueCategoryPatch
   include Redmine::SafeAttributes
   safe_attributes :tracker_ids, :position
