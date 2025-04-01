@@ -16,6 +16,7 @@ describe "FileChecksums" do
     assert_checksum %w"15dcb293c42721a34530d89570257106 bf3ee442a603c5f0759b3fc948a6ff95 27f849c985a952b4302ac4a5acd7c1ab b5d6e3adafc967c5fdf669e5cff0375f bfcd39e39a00f922f1633ad2061304c7", "app/controllers/issue_categories_controller.rb"
 
     #the issue_categories tab is completely overridden and should be adapted if anything change in Redmine core
-    assert_checksum %w"4f107afaf16c1787f6546275373ccff9", "app/views/projects/settings/_issue_categories.html.erb"
+    # Redmine 5.1.7 & 6.0.4 are fine
+    assert_checksum %w"4f107afaf16c1787f6546275373ccff9 c2e64c984c44dcb0df1e14e850652f1f", "app/views/projects/settings/_issue_categories.html.erb"
   end
 end
